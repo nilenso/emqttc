@@ -59,7 +59,7 @@ type2([_H |T]) ->
 %%------------------------------------------------------------------------------
 -spec match(binary(), binary()) -> boolean().
 match(Name, Filter) when is_binary(Name) and is_binary(Filter) ->
-    match(words(Name), words(string:prefix(Filter, "$queue/")));
+    match(words(Name), words(string:trim(Filter, leading, "$queue/")));
 match([], []) ->
     true;
 match([H|T1], [H|T2]) ->
